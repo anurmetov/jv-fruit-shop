@@ -11,5 +11,4 @@ public class FruitTransaction {
     private DataServiceImpl dataService = new DataServiceImpl();
     private FileWriter fileParser = new CsvWriterImpl();
 
-
 }

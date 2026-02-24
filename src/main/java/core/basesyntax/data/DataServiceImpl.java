@@ -25,6 +25,7 @@ public class DataServiceImpl implements QuantityProvider, FruitNamesProvider{
     public List<String> getAllFruitNames() {
         return recordsFromCsv
                 .stream()
+                .skip(1)
                 .map(list -> list.get(1))
                 .distinct()
                 .toList();

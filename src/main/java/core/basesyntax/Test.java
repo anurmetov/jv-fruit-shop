@@ -1,5 +1,6 @@
 package core.basesyntax;
 
+import core.basesyntax.data.DataServiceImpl;
 import core.basesyntax.fileservice.reader.CsvReaderImpl;
 import core.basesyntax.fileservice.reader.FileReader;
 import core.basesyntax.fileservice.writer.FileWriter;
@@ -12,8 +13,11 @@ public class Test {
     public static void main(String[] args) {
         FruitTransaction fruitTransaction = new FruitTransaction();
 
-        FileReader fileReader = new CsvReaderImpl();
+        FileReader fileReader = new CsvReaderImpl("input_data.csv");
 
-        System.out.println(fileReader.readFile("input_data.csv"));
+        DataServiceImpl dataService = new DataServiceImpl();
+
+        System.out.println(dataService.getBalance("banana"));
+
     }
 }

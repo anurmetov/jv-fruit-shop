@@ -17,7 +17,7 @@ public class Test {
 
         DataServiceImpl dataService = new DataServiceImpl();
 
-        System.out.println(dataService.getBalance("banana"));
+        System.out.println(dataService.getStartBalance("banana"));
 
     }
 }

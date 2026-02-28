@@ -16,8 +16,9 @@ import java.util.stream.Collectors;
  */
 public class Test {
     public static void main(String[] args) {
-        DataServiceImpl dataService = new DataServiceImpl();
-        List<String> fruitNames = dataService.getAllFruitNames();
+        FileReader fileReader = new CsvReaderImpl();
+
+        System.out.println(fileReader.readFile("input_data.csv"));
 
 
         // TODO: 1. В списка iменi фруктов до балансу (початок змiни) додати або вiдняти значення з кожного Purchase, Supply, Return та зробити

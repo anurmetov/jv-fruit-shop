@@ -1,29 +1,19 @@
 package core.basesyntax.fileservice.reader;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class CsvReaderImpl implements FileReader {
     public static final String COMMA_DELIMITER = ",";
 
-    private String filePath;
-
-    public CsvReaderImpl(String filePath) {
-        this.filePath = filePath;
-    }
-
-    private String getFilePath() {
-        return filePath;
-    }
-
     @Override
-    public List<List<String>> readFile() {
+    public List<String> readFile(String fileName) {
         List<List<String>> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new java.io.FileReader(getFilePath()))) {
+        try (BufferedReader br = new BufferedReader(new java.io.FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMITER);
@@ -32,6 +22,9 @@ public class CsvReaderImpl implements FileReader {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return records;
+        return records
+                .stream()
+                .flatMap(Collection::stream)
+                .toList();
     }
 }

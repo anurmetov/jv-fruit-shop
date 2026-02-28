@@ -4,5 +4,5 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 public interface FileReader {
-    List<List<String>> readFile();
+    List<String> readFile(String fileName);
 }

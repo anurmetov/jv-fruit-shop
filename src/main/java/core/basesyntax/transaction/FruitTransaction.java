@@ -7,7 +7,7 @@ import core.basesyntax.fileservice.reader.CsvReaderImpl;
 import core.basesyntax.fileservice.reader.FileReader;
 
 public class FruitTransaction {
-    private FileReader fileReader = new CsvReaderImpl("input_data.csv");
+    private FileReader fileReader = new CsvReaderImpl();
     private DataServiceImpl dataService = new DataServiceImpl();
     private FileWriter fileParser = new CsvWriterImpl();
 

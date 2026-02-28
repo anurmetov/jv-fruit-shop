@@ -17,8 +17,10 @@ import java.util.stream.Collectors;
 public class Test {
     public static void main(String[] args) {
         FileReader fileReader = new CsvReaderImpl();
-
-        System.out.println(fileReader.readFile("input_data.csv"));
+        List<String> inputReport = fileReader.readFile("input_data.csv");
+        System.out.println(inputReport);
+        DataServiceImpl dataService = new DataServiceImpl();
+        dataService.convertToTransaction(inputReport);
 
 
         // TODO: 1. В списка iменi фруктов до балансу (початок змiни) додати або вiдняти значення з кожного Purchase, Supply, Return та зробити

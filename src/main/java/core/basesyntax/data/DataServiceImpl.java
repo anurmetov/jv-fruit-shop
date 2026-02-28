@@ -1,42 +1,26 @@
 package core.basesyntax.data;
 
-import core.basesyntax.Operation;
-import core.basesyntax.fileservice.reader.CsvReaderImpl;
+import core.basesyntax.transaction.FruitTransaction;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.List;
 
-public class DataServiceImpl implements QuantityProvider, FruitNamesProvider{
-
-    private final List<String> recordsFromCsv =new CsvReaderImpl().readFile("input_data.csv");
-
+public class DataServiceImpl implements Convertable {
     @Override
-    public List<String> getAllFruitNames() {
-        return List.of();
-    }
+    public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
+        List<FruitTransaction> transactions = new ArrayList<>();
 
-    @Override
-    public int getQuantity(String fruit, Operation operation) {
-        return 0;
-    }
+        for (int i = 3; i < inputReport.size(); i += 3) {
+            String type = inputReport.get(i);
+            String fruit = inputReport.get(i + 1);
+            int quantity = Integer.parseInt(inputReport.get(i + 2));
 
-//    @Override
-//    public int getQuantity(String fruit, Operation operation) {
-//        return recordsFromCsv
-//                .stream()
-//                .filter(list -> list.get(0).equals(operation.getCode())
-//                        && list.get(1).equals(fruit.toLowerCase()))
-//                .mapToInt(inner -> Integer.parseInt(inner.get(2)))
-//                .sum();
-//    }
-//
-//    @Override
-//    public List<String> getAllFruitNames() {
-//        return recordsFromCsv
-//                .stream()
-//                .skip(1)
-//                .map(list -> list.get(1))
-//                .distinct()
-//                .toList();
-//    }
+            transactions.add(new FruitTransaction(
+                    FruitTransaction.Operation.fromCode(type),
+                    fruit,
+                    quantity
+            ));
+        }
+        return transactions;
+    }
 }

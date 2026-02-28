@@ -1,18 +1,58 @@
 package core.basesyntax.transaction;
 
-import core.basesyntax.data.DataServiceImpl;
-import core.basesyntax.fileservice.writer.FileWriter;
-import core.basesyntax.fileservice.writer.CsvWriterImpl;
-import core.basesyntax.fileservice.reader.CsvReaderImpl;
-import core.basesyntax.fileservice.reader.FileReader;
-
 public class FruitTransaction {
-    private FileReader fileReader = new CsvReaderImpl();
-    private DataServiceImpl dataService = new DataServiceImpl();
-    private FileWriter fileParser = new CsvWriterImpl();
+    private Operation operation;
+    private String fruit;
+    private int quantity;
 
+    public FruitTransaction(Operation operation, String fruit, int quantity) {
+        this.operation = operation;
+        this.fruit = fruit;
+        this.quantity = quantity;
+    }
 
+    public enum Operation {
 
+        BALANCE("b"),
+        SUPPLY("s"),
+        PURCHASE("p"),
+        RETURN("r");
 
+        private String code;
+
+        Operation(String code) {
+            this.code = code;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public static Operation fromCode(String code) {
+            for (Operation op : Operation.values()) {
+                if (op.code.equals(code)) {
+                    return op;
+                }
+            }
+            throw new IllegalArgumentException("Unknown operation: " + code);
+        }
+
+    }
+
+    public String getFruit() {
+        return fruit;
+    }
+
+    public void setFruit(String fruit) {
+        this.fruit = fruit;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
 }

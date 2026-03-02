@@ -5,18 +5,20 @@ import core.basesyntax.transaction.FruitTransaction;
 public interface OperationHandler {
     void process(FruitTransaction fruitTransaction);
 
-    default boolean canBeProcessed(FruitTransaction fruitTransaction) {
+    default void canBeProcessed(FruitTransaction fruitTransaction) {
+        if (fruitTransaction == null) {
+            throw new RuntimeException("Transaction cannot be null");
+        }
+        if (fruitTransaction.getFruit() == null) {
+            throw new RuntimeException("Fruit cannot be null");
+        }
 
         if (fruitTransaction.getFruit().isEmpty()) {
-            throw new RuntimeException("Fruit name is null: " + fruitTransaction.getFruit());
+            throw new RuntimeException("Fruit cannot be empty");
         }
-
         if (fruitTransaction.getQuantity() < 0) {
-            throw new
-                    RuntimeException("Fruit quantity is lower than zero: "
+            throw new IllegalArgumentException("Quantity cannot be negative: "
                     + fruitTransaction.getQuantity());
-
         }
-        return true;
     }
 }

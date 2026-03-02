@@ -6,10 +6,15 @@ import core.basesyntax.transaction.FruitTransaction;
 public class PurchaseOperation implements OperationHandler {
     @Override
     public void process(FruitTransaction fruitTransaction) {
-        if (canBeProcessed(fruitTransaction)) {
-            int currentQuantity = Storage.FRUIT_STORAGE.get(fruitTransaction.getFruit());
-            int shouldQuantity = currentQuantity - fruitTransaction.getQuantity();
-            Storage.FRUIT_STORAGE.put(fruitTransaction.getFruit(), shouldQuantity);
+        canBeProcessed(fruitTransaction);
+        int currentQuantity = Storage.FRUIT_STORAGE.get(fruitTransaction.getFruit());
+        int shouldQuantity = currentQuantity - fruitTransaction.getQuantity();
+
+        if (shouldQuantity < 0) {
+            throw new RuntimeException("Can not be added to the storage, " +
+                    "quantity can not be lower that zero: " + shouldQuantity);
         }
+
+        Storage.FRUIT_STORAGE.put(fruitTransaction.getFruit(), shouldQuantity);
     }
 }

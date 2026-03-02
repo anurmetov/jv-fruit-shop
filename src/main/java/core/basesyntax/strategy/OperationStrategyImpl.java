@@ -5,7 +5,6 @@ import core.basesyntax.transaction.FruitTransaction;
 import java.util.Map;
 
 public class OperationStrategyImpl implements OperationStrategy {
-
     private final Map<FruitTransaction.Operation, OperationHandler> operationHandlers;
 
     public OperationStrategyImpl(Map<FruitTransaction.Operation,
@@ -15,6 +14,9 @@ public class OperationStrategyImpl implements OperationStrategy {
 
     @Override
     public OperationHandler getHandler(FruitTransaction.Operation operation) {
+        if (operation == null) {
+            throw new UnsupportedOperationException("Operation is null");
+        }
         return operationHandlers.get(operation);
     }
 }

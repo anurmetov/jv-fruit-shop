@@ -23,11 +23,10 @@ public class CsvWriterImpl implements FileWriter {
         }
 
         File csvOutputFile = new File(toFilePath);
-        ReportGenerator reportGenerator = new ReportGeneratorImpl();
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
-            pw.write(reportGenerator.getReport());
+            pw.write(fromString);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Input file was not found: " + toFilePath);
+            throw new RuntimeException("Input file was not found: " + toFilePath, e);
         }
     }
 }

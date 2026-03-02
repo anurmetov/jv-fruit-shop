@@ -5,8 +5,8 @@ import core.basesyntax.fileservice.ReportGenerator;
 import java.util.Map;
 
 public class ReportGeneratorImpl implements ReportGenerator {
-    private static final String STRING_TITLE = "fruit, quantity" + System.lineSeparator();
-    private static final String COMMA_DELIMITER = ", ";
+    private static final String STRING_TITLE = "fruit,quantity" + System.lineSeparator();
+    private static final String COMMA_DELIMITER = ",";
 
     @Override
     public String getReport() {

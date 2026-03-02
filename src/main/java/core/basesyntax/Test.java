@@ -1,9 +1,16 @@
 package core.basesyntax;
 
+import core.basesyntax.data.Convertable;
 import core.basesyntax.data.DataServiceImpl;
+import core.basesyntax.db.StorageImpl;
 import core.basesyntax.fileservice.reader.CsvReaderImpl;
 import core.basesyntax.fileservice.reader.FileReader;
 import core.basesyntax.fileservice.writer.FileWriter;
+import core.basesyntax.handler.*;
+import core.basesyntax.shop.ShopService;
+import core.basesyntax.shop.ShopServiceImpl;
+import core.basesyntax.strategy.OperationStrategy;
+import core.basesyntax.strategy.OperationStrategyImpl;
 import core.basesyntax.transaction.FruitTransaction;
 
 import java.util.HashMap;
@@ -16,11 +23,28 @@ import java.util.stream.Collectors;
  */
 public class Test {
     public static void main(String[] args) {
+        // 1. Read the data from the input CSV file
         FileReader fileReader = new CsvReaderImpl();
         List<String> inputReport = fileReader.readFile("input_data.csv");
-        System.out.println(inputReport);
-        DataServiceImpl dataService = new DataServiceImpl();
-        dataService.convertToTransaction(inputReport);
+
+        // 2. Convert the incoming data into FruitTransactions list
+        Convertable dataConverter = new DataServiceImpl();
+        List<FruitTransaction> transactions = dataConverter.convertToTransaction(inputReport);
+
+        // 3. Create and feel the map with all OperationHandler implementations
+        Map<FruitTransaction.Operation, OperationHandler> operationHandlers = new HashMap<>();
+        operationHandlers.put(FruitTransaction.Operation.BALANCE, new BalanceOperation());
+        operationHandlers.put(FruitTransaction.Operation.PURCHASE, new PurchaseOperation());
+        operationHandlers.put(FruitTransaction.Operation.RETURN, new ReturnOperation());
+        operationHandlers.put(FruitTransaction.Operation.SUPPLY, new SupplyOperation());
+        OperationStrategy operationStrategy = new OperationStrategyImpl(operationHandlers);
+
+        ShopService shopService = new ShopServiceImpl(operationStrategy);
+        shopService.process(transactions);
+
+
+        System.out.println(StorageImpl.FRUIT_STORAGE);
+
 
 
         // TODO: 1. В списка iменi фруктов до балансу (початок змiни) додати або вiдняти значення з кожного Purchase, Supply, Return та зробити

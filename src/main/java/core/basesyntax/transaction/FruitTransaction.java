@@ -5,6 +5,15 @@ public class FruitTransaction {
     private String fruit;
     private int quantity;
 
+    @Override
+    public String toString() {
+        return "\n"+ "FruitTransaction{" +
+                "operation=" + operation +
+                ", fruit='" + fruit + '\'' +
+                ", quantity=" + quantity +
+                '}' + "\n";
+    }
+
     public FruitTransaction(Operation operation, String fruit, int quantity) {
         this.operation = operation;
         this.fruit = fruit;
@@ -55,4 +64,7 @@ public class FruitTransaction {
         this.quantity = quantity;
     }
 
+    public Operation getOperation() {
+        return operation;
+    }
 }

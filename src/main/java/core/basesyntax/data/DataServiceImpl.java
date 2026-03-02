@@ -9,7 +9,6 @@ public class DataServiceImpl implements Convertable {
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
         List<FruitTransaction> transactions = new ArrayList<>();
-
         for (int i = 3; i < inputReport.size(); i += 3) {
             String type = inputReport.get(i);
             String fruit = inputReport.get(i + 1);

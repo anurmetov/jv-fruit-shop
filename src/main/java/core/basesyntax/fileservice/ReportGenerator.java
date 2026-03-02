@@ -1,4 +1,4 @@
-package core.basesyntax.fileservice.report;
+package core.basesyntax.fileservice;
 
 public interface ReportGenerator {
     String getReport();

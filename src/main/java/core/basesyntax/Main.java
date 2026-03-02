@@ -2,12 +2,12 @@ package core.basesyntax;
 
 import core.basesyntax.data.Converter;
 import core.basesyntax.data.DataConverterImpl;
-import core.basesyntax.fileservice.reader.CsvReaderImpl;
-import core.basesyntax.fileservice.reader.FileReader;
-import core.basesyntax.fileservice.report.ReportGenerator;
-import core.basesyntax.fileservice.report.ReportGeneratorImpl;
-import core.basesyntax.fileservice.writer.CsvWriterImpl;
-import core.basesyntax.fileservice.writer.FileWriter;
+import core.basesyntax.fileservice.impl.CsvReaderImpl;
+import core.basesyntax.fileservice.FileReader;
+import core.basesyntax.fileservice.ReportGenerator;
+import core.basesyntax.fileservice.impl.ReportGeneratorImpl;
+import core.basesyntax.fileservice.impl.CsvWriterImpl;
+import core.basesyntax.fileservice.FileWriter;
 import core.basesyntax.handler.BalanceOperation;
 import core.basesyntax.handler.OperationHandler;
 import core.basesyntax.handler.PurchaseOperation;

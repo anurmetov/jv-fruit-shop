@@ -9,6 +9,11 @@ public class ReportGeneratorImpl implements ReportGenerator {
 
     @Override
     public String getReport(Map<String, Integer> fruitData) {
+        if (fruitData == null) {
+            throw new RuntimeException("The fruit storage is null");
+
+        }
+
         if (fruitData.isEmpty()) {
             throw new RuntimeException("The fruit storage is empty");
         }

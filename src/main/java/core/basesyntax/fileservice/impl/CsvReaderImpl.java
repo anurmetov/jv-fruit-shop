@@ -15,7 +15,7 @@ public class CsvReaderImpl implements FileReader {
     public List<String> readFile(String fileName) {
 
         if (fileName == null) {
-            throw new RuntimeException("Provided file name is empty");
+            throw new RuntimeException("Provided file name is null");
         }
 
         List<List<String>> records = new ArrayList<>();

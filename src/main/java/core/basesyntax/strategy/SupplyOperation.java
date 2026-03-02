@@ -1,9 +1,9 @@
-package core.basesyntax.handler;
+package core.basesyntax.strategy;
 
 import core.basesyntax.db.Storage;
 import core.basesyntax.transaction.FruitTransaction;
 
-public class ReturnOperation implements OperationHandler {
+public class SupplyOperation implements OperationHandler {
     @Override
     public void process(FruitTransaction fruitTransaction) {
         canBeProcessed(fruitTransaction);

@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataConverterImpl implements Converter {
+
+    private static final int HEADER_OFFSET = 3;
+
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
 
@@ -13,7 +16,7 @@ public class DataConverterImpl implements Converter {
         }
 
         List<FruitTransaction> transactions = new ArrayList<>();
-        for (int i = 3; i < inputReport.size(); i += 3) {
+        for (int i = HEADER_OFFSET; i < inputReport.size(); i += 3) {
             String type = inputReport.get(i);
             String fruit = inputReport.get(i + 1);
             int quantity = Integer.parseInt(inputReport.get(i + 2));

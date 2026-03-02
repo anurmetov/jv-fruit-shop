@@ -25,7 +25,7 @@ public class CsvWriterImpl implements FileWriter {
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             pw.write(fromString);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Input file was not found: " + toFilePath, e);
+            throw new RuntimeException("Could not create or write to file: " + toFilePath);
         }
     }
 }

@@ -1,6 +1,6 @@
 package core.basesyntax.shop;
 
-import core.basesyntax.handler.OperationHandler;
+import core.basesyntax.strategy.OperationHandler;
 import core.basesyntax.strategy.OperationStrategy;
 import core.basesyntax.transaction.FruitTransaction;
 import java.util.List;
@@ -18,12 +18,12 @@ public class ShopServiceImpl implements ShopService {
             throw new RuntimeException("Transaction list is null");
         }
 
-        if (transactions.isEmpty()) {
-            throw new RuntimeException("Transaction list is empty");
-        }
-
         for (FruitTransaction transaction : transactions) {
             OperationHandler handler = operationStrategy.getHandler(transaction.getOperation());
+            if (handler == null) {
+                throw new RuntimeException
+                        ("No handler is found for the transaction's operation.");
+            }
             handler.process(transaction);
         }
     }

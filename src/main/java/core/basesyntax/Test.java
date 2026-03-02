@@ -5,6 +5,9 @@ import core.basesyntax.data.DataServiceImpl;
 import core.basesyntax.db.StorageImpl;
 import core.basesyntax.fileservice.reader.CsvReaderImpl;
 import core.basesyntax.fileservice.reader.FileReader;
+import core.basesyntax.fileservice.report.ReportGenerator;
+import core.basesyntax.fileservice.report.ReportGeneratorImpl;
+import core.basesyntax.fileservice.writer.CsvWriterImpl;
 import core.basesyntax.fileservice.writer.FileWriter;
 import core.basesyntax.handler.*;
 import core.basesyntax.shop.ShopService;
@@ -44,6 +47,16 @@ public class Test {
 
 
         System.out.println(StorageImpl.FRUIT_STORAGE);
+
+        // 5.Generate report based on the current Storage state
+        ReportGenerator reportGenerator = new ReportGeneratorImpl();
+        String resultingReport = reportGenerator.getReport();
+
+        System.out.println(resultingReport);
+
+        // 6. Write the received report into the destination file
+        FileWriter fileWriter = new CsvWriterImpl();
+        fileWriter.writeTo(resultingReport, "finalReport.csv");
 
 
 

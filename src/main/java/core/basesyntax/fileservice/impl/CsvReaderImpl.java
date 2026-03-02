@@ -10,13 +10,17 @@ import java.util.List;
 
 public class CsvReaderImpl implements FileReader {
     private static final String COMMA_DELIMITER = ",";
-    private static final String DEFAULT_ORDER_PATH = "src/main/resources/";
 
     @Override
     public List<String> readFile(String fileName) {
+
+        if (fileName == null) {
+            throw new RuntimeException("Provided file name is empty");
+        }
+
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br =
-                     new BufferedReader(new java.io.FileReader(DEFAULT_ORDER_PATH + fileName))) {
+                     new BufferedReader(new java.io.FileReader(fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMITER);

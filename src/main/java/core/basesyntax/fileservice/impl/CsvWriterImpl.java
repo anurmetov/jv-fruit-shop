@@ -7,8 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class CsvWriterImpl implements FileWriter {
-    private static final String DEFAULT_ORDER_PATH = "src/main/resources/";
-
     @Override
     public void writeTo(String fromString, String toFilePath) {
 
@@ -26,7 +24,7 @@ public class CsvWriterImpl implements FileWriter {
 
         File csvOutputFile = new File(toFilePath);
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        try (PrintWriter pw = new PrintWriter(DEFAULT_ORDER_PATH + csvOutputFile)) {
+        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             pw.write(reportGenerator.getReport());
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Input file was not found: " + toFilePath);

@@ -8,7 +8,7 @@ public class DataConverterImpl implements Converter {
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
 
-        if (inputReport.isEmpty()) {
+        if (inputReport == null) {
             throw new RuntimeException("Input list is empty: " + inputReport);
         }
 

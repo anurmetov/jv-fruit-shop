@@ -12,7 +12,9 @@ public interface OperationHandler {
         }
 
         if (fruitTransaction.getQuantity() < 0) {
-            throw new RuntimeException("Fruit quantity is lower than zero: " + fruitTransaction.getQuantity());
+            throw new
+                    RuntimeException("Fruit quantity is lower than zero: "
+                    + fruitTransaction.getQuantity());
 
         }
         return true;

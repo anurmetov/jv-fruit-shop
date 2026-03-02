@@ -2,12 +2,12 @@ package core.basesyntax;
 
 import core.basesyntax.data.Converter;
 import core.basesyntax.data.DataConverterImpl;
-import core.basesyntax.fileservice.impl.CsvReaderImpl;
 import core.basesyntax.fileservice.FileReader;
-import core.basesyntax.fileservice.ReportGenerator;
-import core.basesyntax.fileservice.impl.ReportGeneratorImpl;
-import core.basesyntax.fileservice.impl.CsvWriterImpl;
 import core.basesyntax.fileservice.FileWriter;
+import core.basesyntax.fileservice.ReportGenerator;
+import core.basesyntax.fileservice.impl.CsvReaderImpl;
+import core.basesyntax.fileservice.impl.CsvWriterImpl;
+import core.basesyntax.fileservice.impl.ReportGeneratorImpl;
 import core.basesyntax.handler.BalanceOperation;
 import core.basesyntax.handler.OperationHandler;
 import core.basesyntax.handler.PurchaseOperation;
@@ -46,8 +46,6 @@ public class Main {
 
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
         String resultingReport = reportGenerator.getReport();
-
-        System.out.println(resultingReport);
 
         FileWriter fileWriter = new CsvWriterImpl();
         fileWriter.writeTo(resultingReport, "finalReport.csv");

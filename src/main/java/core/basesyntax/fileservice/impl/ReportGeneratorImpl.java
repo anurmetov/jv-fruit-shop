@@ -2,7 +2,6 @@ package core.basesyntax.fileservice.impl;
 
 import core.basesyntax.db.Storage;
 import core.basesyntax.fileservice.ReportGenerator;
-
 import java.util.Map;
 
 public class ReportGeneratorImpl implements ReportGenerator {

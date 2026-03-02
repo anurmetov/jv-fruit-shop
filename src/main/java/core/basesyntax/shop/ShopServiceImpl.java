@@ -15,7 +15,7 @@ public class ShopServiceImpl implements ShopService {
     @Override
     public void process(List<FruitTransaction> transactions) {
         if (transactions.isEmpty()) {
-            throw new RuntimeException("Transaction List is empty");
+            throw new RuntimeException("Transaction list is empty: " + transactions);
         }
         for (FruitTransaction transaction : transactions) {
             OperationHandler handler = operationStrategy.getHandler(transaction.getOperation());

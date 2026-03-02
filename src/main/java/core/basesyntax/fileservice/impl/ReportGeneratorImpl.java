@@ -12,7 +12,7 @@ public class ReportGeneratorImpl implements ReportGenerator {
     @Override
     public String getReport() {
         if (Storage.FRUIT_STORAGE.isEmpty()) {
-            throw new RuntimeException("The fruit storage is empty!");
+            throw new RuntimeException("The fruit storage is empty: " + Storage.FRUIT_STORAGE);
         }
 
         StringBuilder stringBuilder = new StringBuilder();

@@ -9,7 +9,7 @@ public class DataConverterImpl implements Converter {
     public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
 
         if (inputReport.isEmpty()) {
-            throw new RuntimeException("Input List is empty!");
+            throw new RuntimeException("Input list is empty: " + inputReport);
         }
 
         List<FruitTransaction> transactions = new ArrayList<>();

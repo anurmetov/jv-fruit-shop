@@ -8,11 +8,11 @@ public interface OperationHandler {
     default boolean canBeProcessed(FruitTransaction fruitTransaction) {
 
         if (fruitTransaction.getFruit().isEmpty()) {
-            throw new RuntimeException("Fruit name is null!");
+            throw new RuntimeException("Fruit name is null: " + fruitTransaction.getFruit());
         }
 
         if (fruitTransaction.getQuantity() < 0) {
-            throw new RuntimeException("Fruit quantity is lower than zero!");
+            throw new RuntimeException("Fruit quantity is lower than zero: " + fruitTransaction.getQuantity());
 
         }
         return true;

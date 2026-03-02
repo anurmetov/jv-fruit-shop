@@ -1,4 +1,4 @@
-package core.basesyntax.transaction;
+package core.basesyntax.model;
 
 public class FruitTransaction {
     private static final String BALANCE_CODE = "b";

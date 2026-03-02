@@ -1,6 +1,6 @@
-package core.basesyntax.data;
+package core.basesyntax.service;
 
-import core.basesyntax.transaction.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
 import java.util.List;
 
 public interface Converter {

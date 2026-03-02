@@ -1,6 +1,6 @@
-package core.basesyntax.fileservice.impl;
+package core.basesyntax.service.impl;
 
-import core.basesyntax.fileservice.FileWriter;
+import core.basesyntax.service.FileWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -25,7 +25,7 @@ public class CsvWriterImpl implements FileWriter {
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             pw.write(fromString);
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Could not create or write to file: " + toFilePath);
+            throw new RuntimeException("Could not create or write to file: " + toFilePath, e);
         }
     }
 }

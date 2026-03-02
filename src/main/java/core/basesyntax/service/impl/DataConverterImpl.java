@@ -1,6 +1,7 @@
-package core.basesyntax.data;
+package core.basesyntax.service.impl;
 
-import core.basesyntax.transaction.FruitTransaction;
+import core.basesyntax.model.FruitTransaction;
+import core.basesyntax.service.Converter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class DataConverterImpl implements Converter {
             }
         } catch (NumberFormatException e) {
             throw new RuntimeException("Input file contains invalid quantity value "
-                    + "– expected an integer.");
+                    + "– expected an integer.", e);
         }
         return transactions;
     }

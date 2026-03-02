@@ -1,6 +1,6 @@
-package core.basesyntax.fileservice.impl;
+package core.basesyntax.service.impl;
 
-import core.basesyntax.fileservice.ReportGenerator;
+import core.basesyntax.service.ReportGenerator;
 import java.util.Map;
 
 public class ReportGeneratorImpl implements ReportGenerator {

@@ -16,16 +16,21 @@ public class DataConverterImpl implements Converter {
         }
 
         List<FruitTransaction> transactions = new ArrayList<>();
-        for (int i = HEADER_OFFSET; i < inputReport.size(); i += 3) {
-            String type = inputReport.get(i);
-            String fruit = inputReport.get(i + 1);
-            int quantity = Integer.parseInt(inputReport.get(i + 2));
+        try {
+            for (int i = HEADER_OFFSET; i < inputReport.size(); i += 3) {
+                String type = inputReport.get(i);
+                String fruit = inputReport.get(i + 1);
+                int quantity = Integer.parseInt(inputReport.get(i + 2));
 
-            transactions.add(new FruitTransaction(
-                    FruitTransaction.Operation.fromCode(type),
-                    fruit,
-                    quantity
-            ));
+                transactions.add(new FruitTransaction(
+                        FruitTransaction.Operation.fromCode(type),
+                        fruit,
+                        quantity
+                ));
+            }
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Input file contains invalid quantity value "
+                    + "– expected an integer.");
         }
         return transactions;
     }

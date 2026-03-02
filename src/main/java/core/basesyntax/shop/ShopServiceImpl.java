@@ -21,8 +21,7 @@ public class ShopServiceImpl implements ShopService {
         for (FruitTransaction transaction : transactions) {
             OperationHandler handler = operationStrategy.getHandler(transaction.getOperation());
             if (handler == null) {
-                throw new RuntimeException
-                        ("No handler is found for the transaction's operation.");
+                throw new RuntimeException("No handler is found for the transaction's operation.");
             }
             handler.process(transaction);
         }

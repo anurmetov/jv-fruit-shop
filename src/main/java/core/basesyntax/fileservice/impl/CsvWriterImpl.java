@@ -1,7 +1,6 @@
 package core.basesyntax.fileservice.impl;
 
 import core.basesyntax.fileservice.FileWriter;
-import core.basesyntax.fileservice.ReportGenerator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

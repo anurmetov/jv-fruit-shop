@@ -7,8 +7,8 @@ public class SupplyOperation implements OperationHandler {
     @Override
     public void process(FruitTransaction fruitTransaction) {
         canBeProcessed(fruitTransaction);
-        int currentQuantity = Storage.FRUIT_STORAGE.get(fruitTransaction.getFruit());
+        int currentQuantity = Storage.getAll().get(fruitTransaction.getFruit());
         int shouldQuantity = currentQuantity + fruitTransaction.getQuantity();
-        Storage.FRUIT_STORAGE.put(fruitTransaction.getFruit(), shouldQuantity);
+        Storage.put(fruitTransaction.getFruit(), shouldQuantity);
     }
 }

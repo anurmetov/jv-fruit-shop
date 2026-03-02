@@ -10,14 +10,14 @@ public class ReportGeneratorImpl implements ReportGenerator {
 
     @Override
     public String getReport() {
-        if (Storage.FRUIT_STORAGE.isEmpty()) {
-            throw new RuntimeException("The fruit storage is empty: " + Storage.FRUIT_STORAGE);
+        if (Storage.getAll().isEmpty()) {
+            throw new RuntimeException("The fruit storage is empty");
         }
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(STRING_TITLE);
 
-        for (Map.Entry<String, Integer> entry : Storage.FRUIT_STORAGE.entrySet()) {
+        for (Map.Entry<String, Integer> entry : Storage.getAll().entrySet()) {
             stringBuilder
                     .append(entry.getKey())
                     .append(COMMA_DELIMITER)

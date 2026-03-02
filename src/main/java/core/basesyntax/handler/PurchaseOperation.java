@@ -7,7 +7,7 @@ public class PurchaseOperation implements OperationHandler {
     @Override
     public void process(FruitTransaction fruitTransaction) {
         canBeProcessed(fruitTransaction);
-        int currentQuantity = Storage.FRUIT_STORAGE.get(fruitTransaction.getFruit());
+        int currentQuantity = Storage.getAll().get(fruitTransaction.getFruit());
         int shouldQuantity = currentQuantity - fruitTransaction.getQuantity();
 
         if (shouldQuantity < 0) {
@@ -15,6 +15,6 @@ public class PurchaseOperation implements OperationHandler {
                     "quantity can not be lower that zero: " + shouldQuantity);
         }
 
-        Storage.FRUIT_STORAGE.put(fruitTransaction.getFruit(), shouldQuantity);
+        Storage.put(fruitTransaction.getFruit(), shouldQuantity);
     }
 }

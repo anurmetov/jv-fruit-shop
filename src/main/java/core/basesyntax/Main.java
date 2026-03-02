@@ -2,6 +2,7 @@ package core.basesyntax;
 
 import core.basesyntax.data.Converter;
 import core.basesyntax.data.DataConverterImpl;
+import core.basesyntax.db.Storage;
 import core.basesyntax.fileservice.FileReader;
 import core.basesyntax.fileservice.FileWriter;
 import core.basesyntax.fileservice.ReportGenerator;
@@ -45,7 +46,7 @@ public class Main {
         shopService.process(transactions);
 
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        String resultingReport = reportGenerator.getReport();
+        String resultingReport = reportGenerator.getReport(Storage.getAll());
 
         FileWriter fileWriter = new CsvWriterImpl();
         fileWriter.writeTo(resultingReport, "src/main/resources/finalReport.csv");

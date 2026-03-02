@@ -9,15 +9,15 @@ public class ReportGeneratorImpl implements ReportGenerator {
     private static final String COMMA_DELIMITER = ",";
 
     @Override
-    public String getReport() {
-        if (Storage.getAll().isEmpty()) {
+    public String getReport(Map<String, Integer> fruitData) {
+        if (fruitData.isEmpty()) {
             throw new RuntimeException("The fruit storage is empty");
         }
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(STRING_TITLE);
 
-        for (Map.Entry<String, Integer> entry : Storage.getAll().entrySet()) {
+        for (Map.Entry<String, Integer> entry : fruitData.entrySet()) {
             stringBuilder
                     .append(entry.getKey())
                     .append(COMMA_DELIMITER)

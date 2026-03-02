@@ -4,6 +4,6 @@ import core.basesyntax.transaction.FruitTransaction;
 
 import java.util.List;
 
-public interface Convertable {
+public interface Converter {
     List<FruitTransaction> convertToTransaction(List<String> inputReport);
 }

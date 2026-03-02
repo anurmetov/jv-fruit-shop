@@ -5,7 +5,7 @@ import core.basesyntax.transaction.FruitTransaction;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataServiceImpl implements Convertable {
+public class DataConverterImpl implements Converter {
     @Override
     public List<FruitTransaction> convertToTransaction(List<String> inputReport) {
         List<FruitTransaction> transactions = new ArrayList<>();

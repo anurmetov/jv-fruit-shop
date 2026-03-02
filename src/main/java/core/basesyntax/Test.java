@@ -1,8 +1,8 @@
 package core.basesyntax;
 
-import core.basesyntax.data.Convertable;
-import core.basesyntax.data.DataServiceImpl;
-import core.basesyntax.db.StorageImpl;
+import core.basesyntax.data.Converter;
+import core.basesyntax.data.DataConverterImpl;
+import core.basesyntax.db.Storage;
 import core.basesyntax.fileservice.reader.CsvReaderImpl;
 import core.basesyntax.fileservice.reader.FileReader;
 import core.basesyntax.fileservice.report.ReportGenerator;
@@ -19,7 +19,6 @@ import core.basesyntax.transaction.FruitTransaction;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Feel free to remove this class and create your own.
@@ -31,7 +30,7 @@ public class Test {
         List<String> inputReport = fileReader.readFile("input_data.csv");
 
         // 2. Convert the incoming data into FruitTransactions list
-        Convertable dataConverter = new DataServiceImpl();
+        Converter dataConverter = new DataConverterImpl();
         List<FruitTransaction> transactions = dataConverter.convertToTransaction(inputReport);
 
         // 3. Create and feel the map with all OperationHandler implementations
@@ -46,7 +45,7 @@ public class Test {
         shopService.process(transactions);
 
 
-        System.out.println(StorageImpl.FRUIT_STORAGE);
+        System.out.println(Storage.FRUIT_STORAGE);
 
         // 5.Generate report based on the current Storage state
         ReportGenerator reportGenerator = new ReportGeneratorImpl();

@@ -1,7 +1,6 @@
 package core.basesyntax.fileservice.report;
 
-import core.basesyntax.db.StorageImpl;
-import core.basesyntax.shop.ShopService;
+import core.basesyntax.db.Storage;
 
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class ReportGeneratorImpl implements ReportGenerator{
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("fruit").append(", quantity").append(System.lineSeparator());
 
-        for (Map.Entry<String, Integer> entry : StorageImpl.FRUIT_STORAGE.entrySet()) {
+        for (Map.Entry<String, Integer> entry : Storage.FRUIT_STORAGE.entrySet()) {
             stringBuilder
                     .append(entry.getKey())
                     .append(", ")

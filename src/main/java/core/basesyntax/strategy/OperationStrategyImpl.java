@@ -2,9 +2,6 @@ package core.basesyntax.strategy;
 
 import core.basesyntax.handler.OperationHandler;
 import core.basesyntax.transaction.FruitTransaction;
-
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class OperationStrategyImpl implements OperationStrategy {
@@ -14,7 +11,6 @@ public class OperationStrategyImpl implements OperationStrategy {
     public OperationStrategyImpl(Map<FruitTransaction.Operation, OperationHandler> operationHandlers) {
         this.operationHandlers = operationHandlers;
     }
-
 
     @Override
     public OperationHandler getHandler(FruitTransaction.Operation operation) {

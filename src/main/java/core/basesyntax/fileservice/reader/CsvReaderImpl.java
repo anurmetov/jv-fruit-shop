@@ -20,7 +20,7 @@ public class CsvReaderImpl implements FileReader {
                 records.add(Arrays.asList(values));
             }
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("File was not found.");
         }
         return records
                 .stream()

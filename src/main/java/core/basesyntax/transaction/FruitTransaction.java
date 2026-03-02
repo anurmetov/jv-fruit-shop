@@ -1,18 +1,14 @@
 package core.basesyntax.transaction;
 
 public class FruitTransaction {
-    private Operation operation;
-    private String fruit;
-    private int quantity;
+    private static final String BALANCE_CODE = "b";
+    private static final String SUPPLY_CODE = "s";
+    private static final String PURCHASE_CODE = "p";
+    private static final String RETURN_CODE = "r";
 
-    @Override
-    public String toString() {
-        return "\n"+ "FruitTransaction{" +
-                "operation=" + operation +
-                ", fruit='" + fruit + '\'' +
-                ", quantity=" + quantity +
-                '}' + "\n";
-    }
+    private final Operation operation;
+    private final String fruit;
+    private final int quantity;
 
     public FruitTransaction(Operation operation, String fruit, int quantity) {
         this.operation = operation;
@@ -21,13 +17,12 @@ public class FruitTransaction {
     }
 
     public enum Operation {
+        BALANCE(BALANCE_CODE),
+        SUPPLY(SUPPLY_CODE),
+        PURCHASE(PURCHASE_CODE),
+        RETURN(RETURN_CODE);
 
-        BALANCE("b"),
-        SUPPLY("s"),
-        PURCHASE("p"),
-        RETURN("r");
-
-        private String code;
+        private final String code;
 
         Operation(String code) {
             this.code = code;

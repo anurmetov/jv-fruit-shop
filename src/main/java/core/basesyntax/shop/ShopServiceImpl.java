@@ -3,7 +3,6 @@ package core.basesyntax.shop;
 import core.basesyntax.handler.OperationHandler;
 import core.basesyntax.strategy.OperationStrategy;
 import core.basesyntax.transaction.FruitTransaction;
-
 import java.util.List;
 
 public class ShopServiceImpl implements ShopService {
@@ -15,6 +14,9 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public void process(List<FruitTransaction> transactions) {
+        if (transactions.isEmpty()) {
+            throw new RuntimeException("Transaction List is empty");
+        }
         for (FruitTransaction transaction : transactions) {
             OperationHandler handler = operationStrategy.getHandler(transaction.getOperation());
             handler.process(transaction);

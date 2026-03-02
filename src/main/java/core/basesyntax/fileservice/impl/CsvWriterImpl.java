@@ -21,7 +21,7 @@ public class CsvWriterImpl implements FileWriter {
 
         File csvOutputFile = new File(toFilePath);
         ReportGenerator reportGenerator = new ReportGeneratorImpl();
-        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
+        try (PrintWriter pw = new PrintWriter("src/main/resources/" + csvOutputFile)) {
             pw.write(reportGenerator.getReport());
         } catch (FileNotFoundException e) {
             throw new RuntimeException("Input file was not found: " + toFilePath);

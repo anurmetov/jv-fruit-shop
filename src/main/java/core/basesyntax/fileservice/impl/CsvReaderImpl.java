@@ -15,7 +15,8 @@ public class CsvReaderImpl implements FileReader {
     @Override
     public List<String> readFile(String fileName) {
         List<List<String>> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new java.io.FileReader(fileName))) {
+        try (BufferedReader br =
+                     new BufferedReader(new java.io.FileReader("src/main/resources/" + fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMITER);

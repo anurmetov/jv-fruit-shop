@@ -14,12 +14,12 @@ public class ReportGeneratorImpl implements ReportGenerator {
 
         }
 
-        if (fruitData.isEmpty()) {
-            throw new RuntimeException("The fruit storage is empty");
-        }
-
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(STRING_TITLE);
+
+        if (fruitData.isEmpty()) {
+            return stringBuilder.toString();
+        }
 
         for (Map.Entry<String, Integer> entry : fruitData.entrySet()) {
             stringBuilder

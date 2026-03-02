@@ -8,5 +8,5 @@ public class BalanceOperation implements OperationHandler {
     public void process(FruitTransaction fruitTransaction) {
         canBeProcessed(fruitTransaction);
         Storage.put(fruitTransaction.getFruit(), fruitTransaction.getQuantity());
-        }
     }
+}

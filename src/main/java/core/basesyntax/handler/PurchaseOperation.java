@@ -11,8 +11,8 @@ public class PurchaseOperation implements OperationHandler {
         int shouldQuantity = currentQuantity - fruitTransaction.getQuantity();
 
         if (shouldQuantity < 0) {
-            throw new RuntimeException("Can not be added to the storage, " +
-                    "quantity can not be lower that zero: " + shouldQuantity);
+            throw new RuntimeException("Can not be added to the storage, "
+                    + "quantity can not be lower that zero: " + shouldQuantity);
         }
 
         Storage.put(fruitTransaction.getFruit(), shouldQuantity);

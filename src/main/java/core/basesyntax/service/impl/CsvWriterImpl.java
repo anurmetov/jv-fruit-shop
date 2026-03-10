@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 public class CsvWriterImpl implements FileWriter {
+    private static final String FILE_PATH = "src/main/resources/";
+
     @Override
     public void writeTo(String fromString, String toFilePath) {
 
@@ -21,7 +23,7 @@ public class CsvWriterImpl implements FileWriter {
                     + toFilePath);
         }
 
-        File csvOutputFile = new File(toFilePath);
+        File csvOutputFile = new File(FILE_PATH + toFilePath);
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             pw.write(fromString);
         } catch (FileNotFoundException e) {

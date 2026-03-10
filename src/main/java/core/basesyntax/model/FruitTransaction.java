@@ -1,10 +1,6 @@
 package core.basesyntax.model;
 
 public class FruitTransaction {
-    private static final String BALANCE_CODE = "b";
-    private static final String SUPPLY_CODE = "s";
-    private static final String PURCHASE_CODE = "p";
-    private static final String RETURN_CODE = "r";
 
     private final Operation operation;
     private final String fruit;
@@ -32,11 +28,23 @@ public class FruitTransaction {
         this.quantity = quantity;
     }
 
+    public String getFruit() {
+        return fruit;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Operation getOperation() {
+        return operation;
+    }
+
     public enum Operation {
-        BALANCE(BALANCE_CODE),
-        SUPPLY(SUPPLY_CODE),
-        PURCHASE(PURCHASE_CODE),
-        RETURN(RETURN_CODE);
+        BALANCE("b"),
+        SUPPLY("s"),
+        PURCHASE("p"),
+        RETURN("r");
 
         private final String code;
 
@@ -55,15 +63,4 @@ public class FruitTransaction {
 
     }
 
-    public String getFruit() {
-        return fruit;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public Operation getOperation() {
-        return operation;
-    }
 }

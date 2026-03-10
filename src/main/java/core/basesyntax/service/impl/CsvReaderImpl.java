@@ -10,6 +10,7 @@ import java.util.List;
 
 public class CsvReaderImpl implements FileReader {
     private static final String COMMA_DELIMITER = ",";
+    private static final String FILE_PATH = "src/main/resources/";
 
     @Override
     public List<String> readFile(String fileName) {
@@ -20,7 +21,7 @@ public class CsvReaderImpl implements FileReader {
 
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br =
-                     new BufferedReader(new java.io.FileReader(fileName))) {
+                     new BufferedReader(new java.io.FileReader(FILE_PATH + fileName))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(COMMA_DELIMITER);
